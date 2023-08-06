@@ -13,7 +13,6 @@ config_version=5
 config/name="ReorderableContainer"
 run/main_scene="res://example.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [editor_plugins]
 
