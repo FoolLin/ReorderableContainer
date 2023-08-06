@@ -1,0 +1,191 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfx24nntnppqp"]
+
+[ext_resource type="Script" path="res://addons/ReorderableContainer/reorderable_vbox.gd" id="2_no7x4"]
+[ext_resource type="Script" path="res://addons/ReorderableContainer/reorderable_hbox.gd" id="2_yek3h"]
+
+[node name="Example" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.113281, 0.132813, 0.160156, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 25.0
+offset_right = -23.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Normal" type="Container" parent="VBoxContainer/HBoxContainer"]
+process_mode = 1
+custom_minimum_size = Vector2(0, 330)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_no7x4")
+is_vertical = true
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer/Normal"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.835294, 0.203922, 0.203922, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/HBoxContainer/Normal"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.831373, 0.498039, 0.203922, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="VBoxContainer/HBoxContainer/Normal"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.827451, 0.627451, 0.203922, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/HBoxContainer/Normal"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.792157, 0.823529, 0.203922, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Scroll" type="Container" parent="VBoxContainer/HBoxContainer/ScrollContainer"]
+process_mode = 1
+custom_minimum_size = Vector2(0, 650)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_no7x4")
+is_vertical = true
+auto_scroll_range = 0.1
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/Scroll"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0, 0.74902, 0.827451, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/Scroll"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0, 0.572549, 0.823529, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/Scroll"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0, 0.376471, 0.819608, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/Scroll"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.0705882, 0.196078, 0.686275, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/Scroll"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.176471, 0.105882, 0.670588, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/Scroll"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.321569, 0.0705882, 0.686275, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+scroll_horizontal = 100
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
+
+[node name="ReorderableHBox" type="Container" parent="VBoxContainer/ScrollContainer"]
+process_mode = 1
+custom_minimum_size = Vector2(2135, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_yek3h")
+separation = 15
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/ScrollContainer/ReorderableHBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0, 0.764706, 0.8, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/ScrollContainer/ReorderableHBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0, 0.592157, 0.796078, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/ScrollContainer/ReorderableHBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0, 0.403922, 0.792157, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="VBoxContainer/ScrollContainer/ReorderableHBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.0862745, 0.262745, 0.678431, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="VBoxContainer/ScrollContainer/ReorderableHBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0, 0.121569, 0.788235, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="VBoxContainer/ScrollContainer/ReorderableHBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.247059, 0, 0.784314, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="VBoxContainer/ScrollContainer/ReorderableHBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.501961, 0, 0.780392, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="VBoxContainer/ScrollContainer/ReorderableHBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.662745, 0, 0.776471, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="VBoxContainer/ScrollContainer/ReorderableHBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.772549, 0, 0.705882, 1)
+
+[node name="ColorRect10" type="ColorRect" parent="VBoxContainer/ScrollContainer/ReorderableHBox"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.768627, 0, 0.360784, 1)
+
+[connection signal="sort_children" from="VBoxContainer/HBoxContainer/Normal" to="VBoxContainer/HBoxContainer/Normal" method="_on_sort_children"]
+[connection signal="sort_children" from="VBoxContainer/HBoxContainer/ScrollContainer/Scroll" to="VBoxContainer/HBoxContainer/ScrollContainer/Scroll" method="_on_sort_children"]
+[connection signal="sort_children" from="VBoxContainer/ScrollContainer/ReorderableHBox" to="VBoxContainer/ScrollContainer/ReorderableHBox" method="_on_sort_children"]

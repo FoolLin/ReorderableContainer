@@ -1,0 +1,15 @@
+2a60927148abd1d33b818b535e306557
+::res://::1691289820
+example.tscn::PackedScene::7559378808208038611::1691289811::0::1::::<><>::res://addons/ReorderableContainer/reorderable_vbox.gd<>res://addons/ReorderableContainer/reorderable_hbox.gd
+icon.svg::CompressedTexture2D::3236167574276721200::1691024748::1691024752::1::::<><>::
+::res://addons/::1691251776
+::res://addons/ReorderableContainer/::1691289811
+plugin.cfg::TextFile::-1::1691029652::0::1::::<><>::
+plugin.gd::GDScript::-1::1691288453::0::1::::<>EditorPlugin<>::
+reorderable_container.gd::GDScript::-1::1691289811::0::1::::ReorderableContainer<>Container<>res://addons/ReorderableContainer/Icon/reorderable_container_icon.svg::
+reorderable_hbox.gd::GDScript::-1::1691289716::0::1::::ReorderableHBox<>ReorderableContainer<>res://addons/ReorderableContainer/Icon/reorderable_hbox_icon.svg::
+reorderable_vbox.gd::GDScript::-1::1691289716::0::1::::ReorderableVBox<>ReorderableContainer<>res://addons/ReorderableContainer/Icon/reorderable_vbox_icon.svg::
+::res://addons/ReorderableContainer/Icon/::1691288432
+reorderable_container_icon.svg::CompressedTexture2D::4442950100141578259::1691288425::1691288432::1::::<><>::
+reorderable_hbox_icon.svg::CompressedTexture2D::76072035831784697::1691288428::1691288432::1::::<><>::
+reorderable_vbox_icon.svg::CompressedTexture2D::6634246942265662882::1691288341::1691288432::1::::<><>::
