@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfx24nntnppqp"]
+[gd_scene load_steps=4 format=3 uid="uid://dfx24nntnppqp"]
 
 [ext_resource type="Script" path="res://addons/ReorderableContainer/reorderable_vbox.gd" id="2_no7x4"]
 [ext_resource type="Script" path="res://addons/ReorderableContainer/reorderable_hbox.gd" id="2_yek3h"]
+[ext_resource type="Script" path="res://addons/ReorderableContainer/reorderable_container.gd" id="3_oeaes"]
 
 [node name="Example" type="ColorRect"]
 anchors_preset = 15
@@ -72,7 +73,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_no7x4")
 is_vertical = true
-auto_scroll_range = 0.1
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/Scroll"]
 custom_minimum_size = Vector2(0, 100)
@@ -119,12 +119,11 @@ vertical_scroll_mode = 0
 
 [node name="ReorderableHBox" type="Container" parent="VBoxContainer/ScrollContainer"]
 process_mode = 1
-custom_minimum_size = Vector2(2135, 0)
+custom_minimum_size = Vector2(2090, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_yek3h")
-separation = 15
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/ScrollContainer/ReorderableHBox"]
 custom_minimum_size = Vector2(200, 0)
@@ -186,6 +185,12 @@ layout_mode = 2
 mouse_filter = 1
 color = Color(0.768627, 0, 0.360784, 1)
 
+[node name="ReorderableContainer" type="Container" parent="VBoxContainer"]
+process_mode = 1
+layout_mode = 2
+script = ExtResource("3_oeaes")
+
 [connection signal="sort_children" from="VBoxContainer/HBoxContainer/Normal" to="VBoxContainer/HBoxContainer/Normal" method="_on_sort_children"]
 [connection signal="sort_children" from="VBoxContainer/HBoxContainer/ScrollContainer/Scroll" to="VBoxContainer/HBoxContainer/ScrollContainer/Scroll" method="_on_sort_children"]
 [connection signal="sort_children" from="VBoxContainer/ScrollContainer/ReorderableHBox" to="VBoxContainer/ScrollContainer/ReorderableHBox" method="_on_sort_children"]
+[connection signal="sort_children" from="VBoxContainer/ReorderableContainer" to="VBoxContainer/ReorderableContainer" method="_on_sort_children"]

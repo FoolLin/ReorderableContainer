@@ -1,2 +1,3 @@
 res://example.tscn
-res://addons/ReorderableContainer/plugin.cfg
+res://README.md
+res://addons/ReorderableContainer/reorderable_container.gd

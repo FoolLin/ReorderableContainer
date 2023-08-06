@@ -5,8 +5,10 @@ extends Container
 ## A container that allows its child to be reorder and arranges horizontally or vertically.
 ##
 ## A container similar to [BoxContainer] but extended with drag-and-drop style reordering functionality, 
-## and auto-scroll functionality when placed under [ScrollContainer].
+## and auto-scroll functionality when placed under [ScrollContainer].[br][br]
+## [b]Note:[/b] This addon also works with SmoothScroll by SpyrexDE.
 ##
+## @tutorial(SmoothScroll): https://github.com/SpyrexDE/SmoothScroll
 ## @tutorial(Using Containers): https://docs.godotengine.org/en/4.1/tutorials/ui/gui_containers.html
 
 ## Emitted when children have been reordered.
