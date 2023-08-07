@@ -1,5 +1,9 @@
 # <img src="./addons/ReorderableContainer/Icon/reorderable_container_icon.svg" alt="drawing" width="25" style="padding-top: 20px;"/> ReorderableContainer
  A container similar to BoxContainer but extended with drag-and-drop style reordering functionality, and auto-scroll functionality when placed under ScrollContainer.
+
+<p align="center">
+ <img src="https://github.com/FoolLin/ReorderableContainer/assets/104248604/b445dca6-18c6-421c-83f5-603c7e83a2b6.gif" alt="animated" />
+</p>
  
  ## How to use
 1. Click the "+" button to add a new node and select `ReorderableVBox` or `ReorderableHBox`.
