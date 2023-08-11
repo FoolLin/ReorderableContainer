@@ -66,13 +66,14 @@ color = Color(0.792157, 0.823529, 0.203922, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Scroll" type="Container" parent="VBoxContainer/HBoxContainer/ScrollContainer"]
+[node name="Scroll" type="Container" parent="VBoxContainer/HBoxContainer/ScrollContainer" node_paths=PackedStringArray("scroll_container")]
 process_mode = 1
 custom_minimum_size = Vector2(0, 650)
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_no7x4")
 is_vertical = true
+scroll_container = NodePath("..")
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer/ScrollContainer/Scroll"]
 custom_minimum_size = Vector2(0, 100)
@@ -117,13 +118,14 @@ scroll_horizontal = 100
 horizontal_scroll_mode = 2
 vertical_scroll_mode = 0
 
-[node name="ReorderableHBox" type="Container" parent="VBoxContainer/ScrollContainer"]
+[node name="ReorderableHBox" type="Container" parent="VBoxContainer/ScrollContainer" node_paths=PackedStringArray("scroll_container")]
 process_mode = 1
 custom_minimum_size = Vector2(2090, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_yek3h")
+scroll_container = NodePath("..")
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/ScrollContainer/ReorderableHBox"]
 custom_minimum_size = Vector2(200, 0)
