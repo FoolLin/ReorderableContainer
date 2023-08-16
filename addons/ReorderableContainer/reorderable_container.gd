@@ -12,11 +12,11 @@ extends Container
 ## @tutorial(Using Containers): https://docs.godotengine.org/en/4.1/tutorials/ui/gui_containers.html
 
 ## Emitted when children have been reordered.
-signal reordered(children: Array[Control])
+signal reordered(from: int, to: int)
 
 ## Extend the drop zone length at the start and end of the container. 
 ## This will ensure that drop input is recognized even outside the container itself.
-const DROP_ZONE_EXTEND = 500
+const DROP_ZONE_EXTEND = 2000
 
 ## The hold duration time in seconds before the holded child will start being drag.
 @export 
@@ -148,10 +148,10 @@ func _on_start_dragging():
 
 func _on_stop_dragging():
 	_focus_child.z_index = 0
+	reordered.emit(_focus_child.get_index(), _drop_zone_index)
 	move_child(_focus_child, _drop_zone_index)
 	_focus_child = null
 	_drop_zone_index = -1
-	reordered.emit(_get_visible_children())
 	if _is_smooth_scroll:
 		scroll_container.pos = Vector2(scroll_container.scroll_horizontal, -scroll_container.scroll_vertical)
 		scroll_container.process_mode = Node.PROCESS_MODE_INHERIT	
