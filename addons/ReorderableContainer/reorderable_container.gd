@@ -42,6 +42,10 @@ func set_vertical(value):
 	if value == is_vertical:
 		return
 	is_vertical = value
+	if is_vertical:
+		custom_minimum_size.x = 0
+	else:
+		custom_minimum_size.y = 0
 	_on_sort_children()
 
 ## (Optional) [ScrollContainer] refference. Normally, the addon will automatically check 
@@ -64,6 +68,9 @@ var auto_scroll_range := 0.3
 @export 
 var scroll_threshold := 30
 
+## Uses when debugging
+@export
+var is_debugging := false
 
 var _scroll_starting_point := 0
 var _is_smooth_scroll := false
@@ -148,8 +155,9 @@ func _on_start_dragging():
 
 func _on_stop_dragging():
 	_focus_child.z_index = 0
-	reordered.emit(_focus_child.get_index(), _drop_zone_index)
+	var focus_child_index := _focus_child.get_index()
 	move_child(_focus_child, _drop_zone_index)
+	reordered.emit(focus_child_index, _drop_zone_index)
 	_focus_child = null
 	_drop_zone_index = -1
 	if _is_smooth_scroll:
@@ -285,44 +293,41 @@ func _adjust_drop_zone_rect():
 	var children = _get_visible_children()
 	for i in range(children.size()):
 		var drop_zone_rect: Rect2
+		var child := children[i] as Control
 		if is_vertical:
 			if i == 0:
 				# First child
-				var child := children[0] as Control
 				drop_zone_rect.position = Vector2(child.position.x, child.position.y - DROP_ZONE_EXTEND)
 				drop_zone_rect.end = Vector2(child.size.x, child.get_rect().get_center().y)
 				_drop_zones.append(drop_zone_rect)
 			else:
 				# In between
 				var prev_child := children[i - 1] as Control
-				var child := children[i] as Control
 				drop_zone_rect.position = Vector2(prev_child.position.x, prev_child.get_rect().get_center().y)
 				drop_zone_rect.end = Vector2(child.size.x, child.get_rect().get_center().y)
 				_drop_zones.append(drop_zone_rect)
-				if i == children.size() - 1:
-					# Is also last child
-					drop_zone_rect.position = Vector2(child.position.x, child.get_rect().get_center().y)
-					drop_zone_rect.end = Vector2(child.size.x, child.get_rect().end.y + DROP_ZONE_EXTEND)
-					_drop_zones.append(drop_zone_rect)
+			if i == children.size() - 1:
+				# Is also last child
+				drop_zone_rect.position = Vector2(child.position.x, child.get_rect().get_center().y)
+				drop_zone_rect.end = Vector2(child.size.x, child.get_rect().end.y + DROP_ZONE_EXTEND)
+				_drop_zones.append(drop_zone_rect)
 		else:
 			if i == 0:
 				# First child
-				var child := children[0] as Control
 				drop_zone_rect.position = Vector2(child.position.x - DROP_ZONE_EXTEND, child.position.y)
 				drop_zone_rect.end = Vector2(child.get_rect().get_center().x, child.size.y)
 				_drop_zones.append(drop_zone_rect)
 			else:
 				# In between
 				var prev_child := children[i - 1] as Control
-				var child := children[i] as Control
 				drop_zone_rect.position = Vector2(prev_child.get_rect().get_center().x, prev_child.position.y)
 				drop_zone_rect.end = Vector2(child.get_rect().get_center().x, child.size.y)
 				_drop_zones.append(drop_zone_rect)
-				if i == children.size() - 1:
-					# Is also last child
-					drop_zone_rect.position = Vector2(child.get_rect().get_center().x, child.position.y)
-					drop_zone_rect.end = Vector2(child.get_rect().end.x + DROP_ZONE_EXTEND, child.size.y)
-					_drop_zones.append(drop_zone_rect)
+			if i == children.size() - 1:
+				# Is also last child
+				drop_zone_rect.position = Vector2(child.get_rect().get_center().x, child.position.y)
+				drop_zone_rect.end = Vector2(child.get_rect().end.x + DROP_ZONE_EXTEND, child.size.y)
+				_drop_zones.append(drop_zone_rect)
 
 
 func _get_visible_children() -> Array[Control]:
@@ -336,3 +341,8 @@ func _get_visible_children() -> Array[Control]:
 		
 		visible_control.append(child)
 	return visible_control
+
+
+func _print_debug(val):
+	if is_debugging:
+		print(val)
