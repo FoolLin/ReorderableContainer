@@ -150,7 +150,9 @@ func _on_start_dragging():
 	_focus_child.z_index = 1
 	# Workaround for SmoothScroll addon
 	if _is_smooth_scroll:
-		scroll_container.process_mode = Node.PROCESS_MODE_DISABLED	
+		scroll_container.process_mode = Node.PROCESS_MODE_DISABLED
+	for child in _get_visible_children():
+		child.propagate_call("set_mouse_filter", [MOUSE_FILTER_IGNORE])
 
 
 func _on_stop_dragging():
@@ -162,13 +164,14 @@ func _on_stop_dragging():
 	_drop_zone_index = -1
 	if _is_smooth_scroll:
 		scroll_container.pos = Vector2(scroll_container.scroll_horizontal, -scroll_container.scroll_vertical)
-		scroll_container.process_mode = Node.PROCESS_MODE_INHERIT	
+		scroll_container.process_mode = Node.PROCESS_MODE_INHERIT
+	for child in _get_visible_children():
+		child.propagate_call("set_mouse_filter", [MOUSE_FILTER_PASS])	
 
 
 func _on_node_added(node):
-	if node is Control and Engine.is_editor_hint():
-		if is_ancestor_of(node):
-			node.mouse_filter = Control.MOUSE_FILTER_PASS
+	if node is Control and not Engine.is_editor_hint():
+		node.mouse_filter = Control.MOUSE_FILTER_PASS
 
 
 func _handle_dragging_child_pos(delta):
