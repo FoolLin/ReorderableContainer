@@ -135,7 +135,7 @@ func _process(delta):
 
 func _handle_input(delta): 
 	if scroll_container != null and _is_press and not _is_hold:
-		var scroll_point = scroll_container.scroll_vertical if is_vertical else scroll_container.scroll_vertical
+		var scroll_point = scroll_container.scroll_vertical if is_vertical else scroll_container.scroll_horizontal
 		if _current_duration == 0:
 			_scroll_starting_point = scroll_point
 		else:
