@@ -163,7 +163,7 @@ func _on_stop_dragging():
 	_focus_child = null
 	_drop_zone_index = -1
 	if _is_smooth_scroll:
-		scroll_container.pos = Vector2(scroll_container.scroll_horizontal, -scroll_container.scroll_vertical)
+		scroll_container.pos = -Vector2(scroll_container.scroll_horizontal, scroll_container.scroll_vertical)
 		scroll_container.process_mode = Node.PROCESS_MODE_INHERIT
 	for child in _get_visible_children():
 		child.propagate_call("set_mouse_filter", [MOUSE_FILTER_PASS])	
