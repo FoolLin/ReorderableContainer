@@ -172,6 +172,7 @@ func _on_stop_dragging():
 func _on_node_added(node):
 	if node is Control and not Engine.is_editor_hint():
 		node.mouse_filter = Control.MOUSE_FILTER_PASS
+		node.minimum_size_changed.connect(_adjust_expected_child_rect)
 
 
 func _handle_dragging_child_pos(delta):
@@ -237,18 +238,19 @@ func _adjust_expected_child_rect():
 	var end_point = 0.0
 	for i in range(children.size()):
 		var child := children[i]
+		var min_size := child.get_combined_minimum_size()
 		if is_vertical:
 			if i == _drop_zone_index:
 				end_point += _focus_child.size.y + separation
 			
-			_expect_child_rect.append(Rect2(Vector2(0, end_point), Vector2(size.x, child.custom_minimum_size.y)))
-			end_point += child.custom_minimum_size.y + separation
+			_expect_child_rect.append(Rect2(Vector2(0, end_point), Vector2(size.x, min_size.y)))
+			end_point += min_size.y + separation
 		else:
 			if i == _drop_zone_index:
 				end_point += _focus_child.size.x + separation
 			
-			_expect_child_rect.append(Rect2(Vector2(end_point, 0), Vector2(child.custom_minimum_size.x, size.y)))
-			end_point += child.custom_minimum_size.x + separation			
+			_expect_child_rect.append(Rect2(Vector2(end_point, 0), Vector2(min_size.x, size.y)))
+			end_point += min_size.x + separation
 			
 
 func _adjust_child_rect(delta: float = -1.0):
