@@ -172,7 +172,6 @@ func _on_stop_dragging():
 func _on_node_added(node):
 	if node is Control and not Engine.is_editor_hint():
 		node.mouse_filter = Control.MOUSE_FILTER_PASS
-		node.minimum_size_changed.connect(_adjust_expected_child_rect)
 
 
 func _handle_dragging_child_pos(delta):
